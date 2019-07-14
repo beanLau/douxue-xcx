@@ -1,0 +1,96 @@
+.dislog-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 9;
+    overflow: hidden;
+}
+.dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20rpx 30rpx 40rpx;
+    width:600rpx;
+    min-height:200rpx;  
+    background:#fff;
+    border-radius:20rpx;
+}
+.top65{
+  margin-top: -65rpx;
+}
+.title{
+    font-size: 38rpx;
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1rpx solid #DDD;
+}
+.content{
+    padding: 20rpx 0;
+    text-align: center;
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 120rpx;
+    font-size: 30rpx;
+    color: #fff;
+}
+.cancel__btn{
+    width: 260rpx;
+    height: 76rpx;
+    border: 1px solid #2F7AF1;
+    border-radius: 38rpx;
+    color: #2F7AF1;
+    text-align: center;
+    line-height: 76rpx;
+}
+.confirm__btn{
+    width: 260rpx;
+    height: 76rpx;
+    border-radius: 38rpx;
+    border: 1px solid #2F7AF1;
+    background-color: #2F7AF1;
+    text-align: center;
+    line-height: 76rpx;
+}
+.close{
+    position:absolute;
+    top:-65rpx;
+    right:0;
+    width:40rpx;
+    height:40rpx;
+}
+.content{
+    max-height: 600rpx;
+    overflow: auto;
+}
+.of-inherit{
+    overflow: inherit;
+}
+.one__btn{
+    margin: 0 auto;
+    width: 400rpx;
+    box-shadow:0 0 18rpx 2rpx rgba(47,122,241,0.3);
+}
+/* 分享button */
+.button_clear{
+    display:inline;
+    padding:0;
+    margin:0;
+    line-height:normal;
+    background-color:transparent;
+    border:none;
+    color: #fff;
+}
+.button_clear::after{
+    border: none;
+}
+.share-button{
+    justify-content:center;
+}

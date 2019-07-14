@@ -1,0 +1,36 @@
+<view>
+  <view class='top-wrap flex'>
+    <view class='top-left-wrap flex'>
+      <image class='user-pic' src='{{avatarUrl}}'></image>
+      <view class='user-info' wx:if="{{phone !=''}}">
+        <view class='user-name'>{{nickName}}</view>
+        <view class='user-phone'>{{phone}}</view>
+      </view>
+      <view class='user-info' wx:else>
+        <view class='user-name' bindtap='toLogin'>
+          <text>登录</text>/
+          <text>注册</text>
+        </view>
+        <view class='user-phone'>登录学习更多课程~</view>
+      </view>
+    </view>
+
+  </view>
+  <view class='menu-content-wrap'>
+    <view class='menu-content'>
+      <view class='menu-item flex'>
+        <view class='menu-title'>我喜欢的文章</view>
+        <view class='menu-icon'></view>
+      </view>
+      <view class='menu-item flex'>
+        <view class='menu-title'>我收藏的试题</view>
+        <view class='menu-icon'></view>
+      </view>
+      <view class='menu-item flex'>
+        <view class='menu-title'>我的错题</view>
+        <view class='menu-icon'></view>
+      </view>
+    </view>
+  </view>
+
+</view>

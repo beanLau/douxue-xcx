@@ -1,0 +1,20 @@
+<view class='star-content'>
+  <view class='star-item'>
+    <view style="width:20rpx;height:40rpx;" bindtap="resetValue" class='{{small ? "small":""}}' wx:if="{{!disable}}"></view>
+    <view wx:for="{{stars}}" wx:key="{{index}}">
+      <image class="star-image {{small ? 'small':''}}" src="{{starValue > item ?(starValue-item <= 0.5?halfSrc:selectedSrc) : normalSrc}}">
+        <view class="item" style="left:0rpx" data-key="{{item+0.5}}" bindtap="selectLeft"></view>
+        <view class="item" style="left:18rpx" data-key="{{item+1}}" bindtap="selectRight"></view>
+      </image>
+    </view>
+  </view>
+  
+  <view wx:if="{{showText}}">
+    <text class='star-fen'>{{starValue}}分</text>
+    <text class='star-desc' wx:if="{{starValue == 0}}">评论</text>
+    <text class='star-desc' wx:if="{{starValue > 0 && starValue <= 2.0}}">较差</text>
+    <text class='star-desc' wx:if="{{starValue > 2 && starValue <= 3.0}}">还行</text>
+    <text class='star-desc' wx:if="{{starValue >= 3.5}}">力荐</text> 
+  </view>
+  
+</view>

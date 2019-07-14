@@ -1,0 +1,42 @@
+.knowledge-content{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.type-list{
+  width: 220rpx;
+  background: #f6f6f6;
+}
+.type-item{
+  position: relative;
+  font-size: 28rpx;
+  color: #333;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+.type-active{
+  background: #fff;
+  color: #2F7AF1;
+  border-left: 4rpx solid #2F7AF1;
+}
+.child-list{
+  justify-content: flex-start;
+  flex-direction: roww;
+  padding-bottom: 10rpx;
+}
+.child-item{
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+  margin: 16rpx 0;
+}
+.child-pic{
+  width: 80rpx;
+  height: 80rpx;
+}
+.child-name{
+  font-size: 24rpx;
+  color: #666;
+}

@@ -1,0 +1,35 @@
+<!-- 弹窗 -->
+<!-- 判断是否是章节课分享 -->
+<view wx:if="{{isShare}}" class="dislog-bg" hidden="{{!isShow}}">
+    <view class="dialog {{isCloseBtn ? 'top65':''}}">
+        <image class="close" src="/images/close.png" bindtap='close'></image>
+        <view class="title">{{titleText}}</view>
+        <view class="content">
+            <slot></slot>
+        </view>
+        <view class="button share-button">
+            <button open-type="share" bindtap="close" class="button_clear">
+                <view class="confirm__btn one__btn">分享到群</view>
+            </button>
+        </view>
+    </view>
+</view>
+<view wx:else class="dislog-bg" hidden="{{!isShow}}">
+    <view class="dialog {{isCloseBtn ? 'top65':''}}">
+        <image class="close" src="/images/close.png" bindtap='close' hidden="{{!isCloseBtn}}"></image>
+        <view class="title" hidden="{{!hasTitle}}">{{titleText}}</view>
+        <view class="content {{isImgTitle?'of-inherit':''}}">
+            <slot></slot>
+        </view>
+        <view class="button" wx:if="{{isBtn || isOneBtn}}">
+            <block wx:if="{{isOneBtn}}">
+                <view wx:if="{{isConfirmBtn}}" class="confirm__btn one__btn" bindtap="onConfirmTap">{{confirmText}}</view>
+                <view wx:else class="confirm__btn one__btn" bindtap="close">{{confirmText}}</view>
+            </block>
+            <block wx:else>
+                <view class="cancel__btn" bindtap="onCancelTap">{{cancelText}}</view>
+                <view class="confirm__btn" bindtap="onConfirmTap">{{confirmText}}</view>
+            </block>
+        </view>
+    </view>
+</view>

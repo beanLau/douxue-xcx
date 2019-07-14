@@ -1,0 +1,31 @@
+.star-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.star-image{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+}
+.star-item{
+  display: flex;
+  align-items: center;
+}
+.item{
+  width: 20rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 0;
+}
+.star-fen{
+  min-width: 120rpx;
+}
+.star-desc{
+  margin-left: 60rpx;
+}
+.small{
+  width: 30rpx;
+  height: 30rpx;
+}

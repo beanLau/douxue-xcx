@@ -1,0 +1,80 @@
+.top-wrap {
+  background: linear-gradient(0deg, rgba(20, 97, 220, 1) 0%, rgba(47, 122, 241, 1) 100%);
+  height: 260rpx;
+  justify-content: space-between;
+}
+
+.user-pic {
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+  height: 130rpx;
+  width: 130rpx;
+  border-radius: 65rpx;
+}
+
+.user-info {
+  margin-left: 30rpx;
+  color: #fff;
+  margin-top: 60rpx;
+}
+
+.user-name {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.user-phone {
+  color: #66a1fd;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 60rpx;
+}
+
+.menu-content-wrap {
+  margin-top: -47rpx;
+  background: transparent;
+  padding: 0 30rpx;
+}
+
+.menu-content {
+  background: #fff;
+  box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.05);
+  border-radius: 10rpx;
+  padding: 0 20rpx;
+  margin-bottom: 140rpx;
+}
+
+.menu-item {
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #111;
+  font-size: 28rpx;
+  margin: 0 28rpx;
+  
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.menu-item:last-of-type {
+  border-bottom: none;
+}
+
+.menu-icon {
+  margin-right: 10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 2rpx solid #bbb;
+  border-right: 2rpx solid #bbb;
+  transform: rotate(45deg);
+}
+.wx-btn{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  opacity: 0;
+}

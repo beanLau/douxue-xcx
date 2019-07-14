@@ -1,0 +1,63 @@
+<!-- 心灵鸡汤 -->
+<view class="Soul-Soother">
+  <view class="Soul-header">
+    <image src="{{encourageWord.headImgUrl || 'https://wxmp.api.wangxiao.cn/static/images/built-in/default-pic.png'}}"></image>
+  </view>
+  <view class="Soul-content">
+    <view class="Soul__name">Hi~ {{encourageWord.nickName}}</view>
+    <view class="Soul__ctx">{{encourageWord.encourageWord}}</view>
+  </view>
+  <!-- <button class="button Soul-content" bindtap='openAlert' wx:else>
+        <view class="Soul__name Soul__name_login">登录/注册</view>
+        <view class="Soul__ctx Soul__ctx_login">登录学习更多课程~</view>
+    </button> -->
+</view>
+
+<!-- nav -->
+<view class="nav-scope">
+  <swiper indicator-dots indicator-color="#ddd" indicator-active-color="#2F7AF1" class="nav-swiper">
+    <swiper-item class="nav" wx:for="{{navModule}}" wx:key="inedx">
+      <view class="nav-item" wx:for="{{item}}" wx:key="title" data-title="{{item.title}}" data-tagid="{{item.tagId}}" wx:key="title" data-type="{{item.type}}" data-typeaction="{{item.typeAction}}" bindtap="navigateModule">
+        <image src="{{item.iconUrl ? item.iconUrl : '/images/icon.png'}}" class="nav__image"></image>
+        <text>{{item.name}}</text>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="daily-wrap">
+  <view class='title-wrap'>试题推荐</view>
+  <view class='title-wrap-tip'>面试题推荐</view>
+  <view class="question-item">
+    <view class="question-content">
+      说一说从浏览器输入url回车到页面呈现，浏览器做了什么？
+    </view>
+    <view class="question-bottom flex">
+      <view class="docount">512 人已做</view>
+      <view class="difficult-wrap flex">
+        <view class="dif-label">难度：</view>
+        <star class="star" starValue="5"></star>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="daily-wrap">
+  <view class='title-wrap'>文章推荐</view>
+  <view class='title-wrap-tip'>好文推荐</view>
+  <view class="article-item flex" wx:for="{{articleList}}" wx:key="index">
+    <view class="article-left">
+      <view class="article-title">
+        {{item.title}}
+      </view>
+      <view class="article-content">
+        {{item.content}}
+      </view>
+      <view class="article-bottom flex">
+        <view class="docount">{{item.readCount}} 人已读</view>
+        <view class="docount">{{item.likeCount}} 人喜欢</view>
+      </view>
+    </view>
+    <image src="{{item.typeUrl}}" class="article-typeurl"></image>
+  </view>
+</view>
