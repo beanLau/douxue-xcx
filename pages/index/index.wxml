@@ -1,63 +1,34 @@
-<!-- 心灵鸡汤 -->
-<view class="Soul-Soother">
-  <view class="Soul-header">
-    <image src="{{encourageWord.headImgUrl || 'https://wxmp.api.wangxiao.cn/static/images/built-in/default-pic.png'}}"></image>
-  </view>
-  <view class="Soul-content">
-    <view class="Soul__name">Hi~ {{encourageWord.nickName}}</view>
-    <view class="Soul__ctx">{{encourageWord.encourageWord}}</view>
-  </view>
-  <!-- <button class="button Soul-content" bindtap='openAlert' wx:else>
-        <view class="Soul__name Soul__name_login">登录/注册</view>
-        <view class="Soul__ctx Soul__ctx_login">登录学习更多课程~</view>
-    </button> -->
-</view>
-
-<!-- nav -->
-<view class="nav-scope">
-  <swiper indicator-dots indicator-color="#ddd" indicator-active-color="#2F7AF1" class="nav-swiper">
-    <swiper-item class="nav" wx:for="{{navModule}}" wx:key="inedx">
-      <view class="nav-item" wx:for="{{item}}" wx:key="title" data-title="{{item.title}}" data-tagid="{{item.tagId}}" wx:key="title" data-type="{{item.type}}" data-typeaction="{{item.typeAction}}" bindtap="navigateModule">
-        <image src="{{item.iconUrl ? item.iconUrl : '/images/icon.png'}}" class="nav__image"></image>
-        <text>{{item.name}}</text>
-      </view>
-    </swiper-item>
-  </swiper>
-</view>
-
-<view class="daily-wrap">
-  <view class='title-wrap'>试题推荐</view>
-  <view class='title-wrap-tip'>面试题推荐</view>
-  <view class="question-item">
-    <view class="question-content">
-      说一说从浏览器输入url回车到页面呈现，浏览器做了什么？
+<view>
+  <view class="page-content">
+    <view class="search-wrap">
+      <image src="/images/search.png" class="search-icon"></image>
+      <input confirm-type="search" bindconfirm="toSearch" class="search-input" placeholder="搜索感兴趣的文章" />
     </view>
-    <view class="question-bottom flex">
-      <view class="docount">512 人已做</view>
-      <view class="difficult-wrap flex">
-        <view class="dif-label">难度：</view>
-        <star class="star" starValue="5"></star>
-      </view>
+    <view class="tab-wrap">
+      <view class="tab-item {{tabIndex == 1 ? 'tab-active':''}}" data-index="1" bindtap="changeTabIndex">最新</view>
+      <view class="tab-item {{tabIndex == 2 ? 'tab-active':''}}" data-index="2" bindtap="changeTabIndex">热门</view>
+      <view class="tab-item {{tabIndex == 3 ? 'tab-active':''}}" data-index="3" bindtap="changeTabIndex">标签</view>
     </view>
   </view>
-</view>
-
-<view class="daily-wrap">
-  <view class='title-wrap'>文章推荐</view>
-  <view class='title-wrap-tip'>好文推荐</view>
-  <view class="article-item flex" wx:for="{{articleList}}" wx:key="index">
-    <view class="article-left">
-      <view class="article-title">
-        {{item.title}}
-      </view>
-      <view class="article-content">
-        {{item.content}}
-      </view>
-      <view class="article-bottom flex">
-        <view class="docount">{{item.readCount}} 人已读</view>
-        <view class="docount">{{item.likeCount}} 人喜欢</view>
+  <view class="tag-list" wx:if="{{tabIndex == 2}}">
+    <view class='tag-item {{tagId == -1 ? "tag-active":""}}' data-id='-1' bindtap="changeTag">浏览最多</view>
+    <view class='tag-item {{tagId == -2 ? "tag-active":""}}' data-id='-2' bindtap="changeTag">点赞最多</view>
+  </view>
+  <view class="tag-list" wx:if="{{tabIndex == 3}}">
+    <view class='tag-item {{item._id == tagId ? "tag-active":""}}' wx:for="{{tagList}}" wx:key="index" bindtap="changeTag" data-id='{{item._id}}'>{{item.name}}</view>
+  </view>
+  <view class="article-list">
+    <view class="article-item" wx:for="{{articleList}}">
+      <view class="article-title">{{item.title}}</view>
+      <image src="http://manage.douxue.top{{item.url}}" class="article-pic"></image>
+      <view class="article-bottom">
+        <image src="/images/search.png" class="article-icon"></image>
+        <text class="article-text">{{item.created_at}}</text>
+        <image src="/images/search.png" class="article-icon"></image>
+        <text class="article-text">{{item.readCount}}</text>
+        <image src="/images/search.png" class="article-icon"></image>
+        <text class="article-text">{{item.likeCount}}</text>
       </view>
     </view>
-    <image src="{{item.typeUrl}}" class="article-typeurl"></image>
   </view>
 </view>
