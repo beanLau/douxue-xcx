@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/knowledge/knowledge",
+    "pages/special/special",
     "pages/my/my"
   ],
   "window": {
@@ -21,7 +21,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/knowledge/knowledge",
+        "pagePath": "pages/special/special",
         "iconPath": "images/knowledge.png",
         "selectedIconPath": "images/knowledge-select.png",
         "text": "专题"

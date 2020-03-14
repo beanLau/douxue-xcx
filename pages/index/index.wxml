@@ -2,7 +2,7 @@
   <view class="page-content">
     <view class="search-wrap">
       <image src="/images/search.png" class="search-icon"></image>
-      <input confirm-type="search" bindconfirm="toSearch" class="search-input" placeholder="搜索感兴趣的文章" />
+      <input confirm-type="search" value='{{title}}' bindinput='changeTitle' bindconfirm="toSearch" class="search-input" placeholder="搜索感兴趣的文章" />
     </view>
     <view class="tab-wrap">
       <view class="tab-item {{tabIndex == 1 ? 'tab-active':''}}" data-index="1" bindtap="changeTabIndex">最新</view>
@@ -17,18 +17,19 @@
   <view class="tag-list" wx:if="{{tabIndex == 3}}">
     <view class='tag-item {{item._id == tagId ? "tag-active":""}}' wx:for="{{tagList}}" wx:key="index" bindtap="changeTag" data-id='{{item._id}}'>{{item.name}}</view>
   </view>
-  <view class="article-list">
+  <view class="article-list" wx:if="articleList">
     <view class="article-item" wx:for="{{articleList}}">
       <view class="article-title">{{item.title}}</view>
-      <image src="http://manage.douxue.top{{item.url}}" class="article-pic"></image>
+      <image src="{{picBase + item.url}}" class="article-pic"></image>
       <view class="article-bottom">
-        <image src="/images/search.png" class="article-icon"></image>
+        <image src="/images/time.png" class="article-icon"></image>
         <text class="article-text">{{item.created_at}}</text>
-        <image src="/images/search.png" class="article-icon"></image>
+        <image src="/images/see.png" class="article-icon"></image>
         <text class="article-text">{{item.readCount}}</text>
-        <image src="/images/search.png" class="article-icon"></image>
+        <image src="/images/like.png" class="article-icon"></image>
         <text class="article-text">{{item.likeCount}}</text>
       </view>
     </view>
   </view>
+  <view class="no-data" wx:if="{{articleList && articleList.length == 0}}">暂无数据</view>
 </view>
