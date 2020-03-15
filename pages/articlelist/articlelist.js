@@ -41,9 +41,9 @@ Page({
       .then(res => {
         let articleList = _this.data.articleList
         let resList = res.data.list;
-        resList.map(item=>{
-          item.createTime = app.formatDbDate(item.created_at)
-        })
+        // resList.map(item=>{
+        //   item.createTime = app.formatDbDate(item.created_at)
+        // })
         if (!articleList) {
           _this.setData({
             articleList: res.data.list

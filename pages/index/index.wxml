@@ -23,7 +23,7 @@
       <image src="{{picBase + item.url}}" class="article-pic"></image>
       <view class="article-bottom">
         <image src="/images/time.png" class="article-icon"></image>
-        <text class="article-text">{{item.createTime}}</text>
+        <text class="article-text">{{item.created_at}}</text>
         <image src="/images/see.png" class="article-icon"></image>
         <text class="article-text">{{item.readCount}}</text>
         <image src="/images/zan2.png" class="article-icon"></image>

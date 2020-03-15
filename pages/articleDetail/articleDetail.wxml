@@ -33,7 +33,7 @@
   <view class="commentinput-fixed" wx:if="{{avatarUrl}}">
     <view class="commentinput-wrap">
       <image src="{{avatarUrl}}" class="comment-icon"></image>
-      <input value='{{commentValue}}' bindinput='changeComment' bindconfirm="tocomment" class="comment-input" placeholder="请输入评论内容" />
+      <input value='{{commentValue}}' confirm-type="send" bindinput='changeComment' bindconfirm="tocomment" class="comment-input" placeholder="请输入评论内容" />
       <image src="/images/zan.png" class="zan-icon" bindtap="toZan"></image>
     </view>
   </view>

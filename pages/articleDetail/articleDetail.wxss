@@ -48,8 +48,8 @@ page{
   line-height: 24px;
 }
 .zan-icon{
-  width: 40rpx;
-  height: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
   margin-right: 4rpx;
 }
 

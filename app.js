@@ -11,7 +11,7 @@ App({
     unlockObj: {}, //分享解锁数据
     authorizeData: null, //微信授权信息
     userInfo: null,
-    picBase: 'https://xcxapi.douxue.top'
+    picBase: ''
   },
   //公共请求接口，请求头添加参数。
   http: function(reqData) {
