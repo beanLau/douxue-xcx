@@ -7,7 +7,7 @@ Page({
   data: {
     pageIndex: 1,
     pageSize: 10,
-    specialList: null,
+    articleList: null,
     hasMore: true
   },
 
@@ -15,30 +15,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getSpecialList();
+    this.setData({
+      picBase: app.globalData.picBase,
+      specialId: options.id
+    })
+    wx.setNavigationBarTitle({
+      title: options.name || "文章列表",
+    })
+    this.getArticleList();
   },
-  getSpecialList: function (){
+  getArticleList: function () {
     wx.showLoading({
       title: '加载中',
     })
     let _this = this;
     let reqData = {
       pageIndex: _this.data.pageIndex,
-      pageSize: _this.data.pageSize
+      pageSize: _this.data.pageSize,
+      specialId: _this.data.specialId
     }
     app.http({
-      url: 'findSpecials',
+      url: 'xcxapi/getArticleListBySpecial',
       data: reqData
     })
       .then(res => {
-        let specialList = _this.data.specialList
-        if (!specialList) {
+        let articleList = _this.data.articleList
+        let resList = res.data.list;
+        resList.map(item=>{
+          item.createTime = app.formatDbDate(item.created_at)
+        })
+        if (!articleList) {
           _this.setData({
-            specialList: res.data.list
+            articleList: res.data.list
           })
         } else {
           _this.setData({
-            specialList: [...specialList, ...res.data.list]
+            articleList: [...articleList, ...res.data.list]
           })
         }
         if (res.data.pageIndex * res.data.pageSize >= res.data.total) {
@@ -50,12 +62,9 @@ Page({
         wx.stopPullDownRefresh()
       })
   },
-  toArticleList: function (e) {
-    console.log(e)
-    let id = e.currentTarget.dataset.id
-    let name = e.currentTarget.dataset.title
+  toArticleDetail: function (e) {
     wx.navigateTo({
-      url: `/pages/articlelist/articlelist?id=${id}&name=${name}`,
+      url: '/pages/articleDetail/articleDetail?id=' + e.currentTarget.dataset.id,
     })
   },
   /**
@@ -93,9 +102,9 @@ Page({
     this.setData({
       pageIndex: 1,
       hasMore: true,
-      specialList: null
+      articleList: null
     })
-    this.getSpecialList()
+    this.getArticleList()
   },
 
   /**
@@ -108,7 +117,7 @@ Page({
     this.setData({
       pageIndex: ++this.data.pageIndex
     })
-    this.getSpecialList()
+    this.getArticleList()
   },
 
   /**

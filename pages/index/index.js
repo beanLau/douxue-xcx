@@ -12,7 +12,8 @@ Page({
     pageIndex: 1,
     pageSize: 10,
     articleList: null,
-    hasMore: true
+    hasMore: true,
+    showGetUserInfo: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -21,14 +22,57 @@ Page({
     this.setData({
       picBase: app.globalData.picBase
     })
-    this.init()
+    if (app.globalData.userInfo && app.globalData.userInfo.token){
+      this.init()
+    }else{
+      app.login(()=>{
+        this.init();
+      })
+    }
   },
   init: function () {
-    app.login(() => {
-      this.getArticleList();
-      this.getTagList();
+    this.getArticleList();
+    this.getTagList();
+    this.checkShowAuthor()
+  },
+  checkShowAuthor: function(){
+    if (app.globalData.userInfo && app.globalData.userInfo.nickName) {
+      return
+    }
+    this.setData({
+      showGetUserInfo: true
     })
-    
+  },
+  getWxUserInfo: function (res) {
+    let _this = this;
+    let rawData
+    if (res.detail) { //用户点击按钮触发。
+      rawData = res.detail.rawData || ''
+    }
+    if (!rawData) { //拒绝授权
+      wx.showModal({
+        title: '提示',
+        content: '拒绝获取用户信息权限，您将无法获取完整用户体验!',
+        confirmText: '知道了',
+        showCancel: false
+      })
+    } else {
+      app.http({
+        url: 'xcxapi/updateUserWxInfo',
+        data: rawData
+      })
+        .then(res => {
+          app.globalData.userInfo = Object.assign(app.globalData.userInfo,res.data)
+        })
+    }
+    _this.setData({
+      showGetUserInfo: false
+    })
+  },
+  toArticleDetail: function(e){
+    wx.navigateTo({
+      url: '/pages/articleDetail/articleDetail?id=' + e.currentTarget.dataset.id,
+    })
   },
   changeTitle: function(e){
     this.setData({
@@ -41,12 +85,16 @@ Page({
       url: 'findAllTags'
     })
       .then(res => {
+        
         _this.setData({
           tagList: res.data.list
         })
       })
   },
   getArticleList: function () {
+    wx.showLoading({
+      title: '加载中',
+    })
     let _this = this;
     let reqData = {
       pageIndex: _this.data.pageIndex,
@@ -58,20 +106,23 @@ Page({
     if(_this.data.tagId){
       reqData.tagId = _this.data.tagId
     }
-
     app.http({
       url: 'xcxapi/getArticleList',
       data: reqData
     })
       .then(res => {
         let articleList = _this.data.articleList
+        let resList = res.data.list
+        resList.map(item => {
+          item.createTime = app.formatDbDate(item.created_at)
+        })
         if (!articleList){
           _this.setData({
-            articleList: res.data.list
+            articleList: resList
           })
         }else{
           _this.setData({
-            articleList: [...articleList,...res.data.list]
+            articleList: [...articleList,...resList]
           })
         }
         if (res.data.pageIndex * res.data.pageSize >= res.data.total){
@@ -79,7 +130,8 @@ Page({
             hasMore: false
           })
         }
-        
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
       })
   },
   toSearch: function () {
@@ -103,11 +155,9 @@ Page({
     if (tabIndex === this.data.tabIndex){
       return
     }
-    if (tabIndex == 1) {
-
-    } else if (tabIndex == 2) {
+    if (tabIndex == 2) {
       tagId = -1;
-    } else {
+    } else if (tabIndex == 3){
       tagId = this.data.tagList[0]["_id"]
     }
     this.setData({

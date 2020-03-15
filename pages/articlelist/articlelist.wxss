@@ -1,0 +1,58 @@
+
+.article-item{
+  border-bottom: 2rpx solid #f1f1f1;
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.article-title{
+  font-size: 32rpx;
+  color: #222;
+  font-weight: 500;
+  line-height: 50rpx;
+}
+.article-pic{
+  height: 300rpx;
+  width: 100%;
+  margin-top: 20rpx;
+}
+.article-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 60rpx;
+}
+.article-icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 16rpx;
+  margin-right: 6rpx;
+}
+.article-text{
+  font-size: 24rpx;
+  color: #999;
+}
+/* 隐藏滚动条 */
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+
+.no-data{
+  text-align: center;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 0;
+}
+.no-data-pic{
+  margin-bottom: 30rpx;
+  width: 260rpx;
+  height: 260rpx;
+}
+.no-data-text{
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1;
+}

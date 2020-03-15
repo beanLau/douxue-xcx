@@ -1,0 +1,41 @@
+<view class="page-content">
+  <view class="article-item">
+    <view class="article-title">{{articleDetail.title}}</view>
+    <view class="article-bottom">
+      <view class="article-bottom-left">
+        <image src="/images/time.png" class="article-icon"></image>
+        <text class="article-text">{{articleDetail.createTime}}</text>
+        <image src="/images/see.png" class="article-icon"></image>
+        <text class="article-text">{{articleDetail.readCount}}</text>
+        <image src="/images/zan2.png" class="article-icon"></image>
+        <text class="article-text">{{articleDetail.likeCount}}</text>
+      </view>
+      <!-- <view class="article-bottom-left">
+        <image src="/images/zan2.png" class="article-icon"></image>
+        <text class="article-text">{{articleDetail.likeCount}}</text>
+      </view> -->
+    </view>
+  </view>
+  <view class="article-content">
+    <wemark md="{{articleDetail.content}}" link highlight type="wemark"></wemark>
+  </view>
+  <view class="comment-list" wx:if="{{commentList && commentList.length > 0}}">
+    <view class="comment-list-title">评论列表</view>
+    <view class="comment-item" wx:for="{{commentList}}">
+      <image src="{{item.avatarUrl}}" class="comment-left"></image>
+      <view class="comment-right">
+        <view class="comment-nickname">{{item.nickName}}</view>
+        <view class="comment-time">{{item.createTime}}</view>
+        <view class="comment-content">{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="commentinput-fixed" wx:if="{{avatarUrl}}">
+    <view class="commentinput-wrap">
+      <image src="{{avatarUrl}}" class="comment-icon"></image>
+      <input value='{{commentValue}}' bindinput='changeComment' bindconfirm="tocomment" class="comment-input" placeholder="请输入评论内容" />
+      <image src="/images/zan.png" class="zan-icon" bindtap="toZan"></image>
+    </view>
+  </view>
+  <image bindtap="showShang" src='/images/shang.png' class='shang-pic {{showMini ? "shang-mini-pic":""}}'></image>
+</view>

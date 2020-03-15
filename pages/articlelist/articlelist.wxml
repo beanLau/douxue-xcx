@@ -1,0 +1,18 @@
+<view class="article-list" wx:if="articleList">
+  <view class="article-item" wx:for="{{articleList}}" bindtap="toArticleDetail" data-id="{{item._id}}">
+    <view class="article-title">{{item.title}}</view>
+    <image src="{{picBase + item.url}}" class="article-pic"></image>
+    <view class="article-bottom">
+      <image src="/images/time.png" class="article-icon"></image>
+      <text class="article-text">{{item.createTime}}</text>
+      <image src="/images/see.png" class="article-icon"></image>
+      <text class="article-text">{{item.readCount}}</text>
+      <image src="/images/zan2.png" class="article-icon"></image>
+      <text class="article-text">{{item.likeCount}}</text>
+    </view>
+  </view>
+  <view class="no-data" wx:if="{{articleList && articleList.length == 0}}">
+    <image class="no-data-pic" src="/images/no-data.png" mode="aspectFit"></image>
+    <view class="no-data-text">暂无数据</view>
+  </view>
+</view>

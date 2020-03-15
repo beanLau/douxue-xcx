@@ -1,0 +1,162 @@
+page{
+  padding-bottom: 100rpx;
+}
+.article-item{
+  padding: 30rpx 30rpx 0 30rpx;
+  border-bottom: 1rpx solid #f6f6f6;
+}
+.article-title{
+  font-size: 36rpx;
+  color: #666;
+  font-weight: bold;
+  line-height: 50rpx;
+}
+.article-pic{
+  height: 300rpx;
+  width: 100%;
+  margin-top: 20rpx;
+}
+.article-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60rpx;
+}
+.article-bottom-left{
+  display: flex;
+  align-items: center;
+}
+.article-bottom-right{
+  display: flex;
+  align-items: center;
+}
+.article-icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 4rpx;
+}
+.article-text{
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1;
+  margin-right: 12rpx;
+}
+.article-content{
+  padding: 0 30rpx 30rpx 30rpx;
+  color: #666;
+  font-size: 28rpx;
+  line-height: 24px;
+}
+.zan-icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 4rpx;
+}
+
+.comment-list{
+  padding: 30rpx;
+}
+.comment-list-title{
+  font-size: 32rp;
+  position: relative;
+  padding-left: 20rpx;
+  height: 80rpx;
+  line-height: 40px;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.comment-list-title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 26rpx;
+  width: 4rpx;
+  height: 32rpx;
+  background: #2F7AF1;
+}
+.comment-item{
+  display: flex;
+  border-bottom: 1rpx solid #f6f6f6;
+  padding: 12rpx 0;
+}
+.comment-item:last-of-type{
+  border: none;
+}
+.comment-left{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+}
+.comment-right{
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+}
+.comment-nickname{
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1;
+}
+.comment-time{
+  font-size: 22rpx;
+  color: #999;
+  line-height: 1;
+  margin-top: 6rpx;
+}
+.comment-content{
+  color: #666;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+.commentinput-fixed{
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  border-top: 1px solid #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+}
+.commentinput-wrap{
+  height: 70rpx;
+  border-radius: 35rpx;
+  background: #f6f6f6;
+  display: flex;
+  align-items: center;
+  padding: 0 10rpx;
+}
+.comment-icon{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 0 10rpx;
+  border-radius: 25rpx;
+}
+.comment-input{
+  flex-grow: 1;
+  font-size: 24rpx;
+  padding-right: 10rpx;
+}
+
+
+.shang-pic {
+ width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  opacity: 1;
+  transition: 0.3s;
+  position: fixed;
+  right: 30rpx;
+  bottom: 160rpx;
+}
+
+.shang-mini-pic {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-radius: 20rpx;
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "都学前端",
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "wemark": "/wemark/wemark"
+  }
+}

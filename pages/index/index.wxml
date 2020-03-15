@@ -18,18 +18,28 @@
     <view class='tag-item {{item._id == tagId ? "tag-active":""}}' wx:for="{{tagList}}" wx:key="index" bindtap="changeTag" data-id='{{item._id}}'>{{item.name}}</view>
   </view>
   <view class="article-list" wx:if="articleList">
-    <view class="article-item" wx:for="{{articleList}}">
+    <view class="article-item" wx:for="{{articleList}}" bindtap="toArticleDetail" data-id="{{item._id}}">
       <view class="article-title">{{item.title}}</view>
       <image src="{{picBase + item.url}}" class="article-pic"></image>
       <view class="article-bottom">
         <image src="/images/time.png" class="article-icon"></image>
-        <text class="article-text">{{item.created_at}}</text>
+        <text class="article-text">{{item.createTime}}</text>
         <image src="/images/see.png" class="article-icon"></image>
         <text class="article-text">{{item.readCount}}</text>
-        <image src="/images/like.png" class="article-icon"></image>
+        <image src="/images/zan2.png" class="article-icon"></image>
         <text class="article-text">{{item.likeCount}}</text>
       </view>
     </view>
   </view>
-  <view class="no-data" wx:if="{{articleList && articleList.length == 0}}">暂无数据</view>
+  <view class="no-data" wx:if="{{articleList && articleList.length == 0}}">
+    <image class="no-data-pic" src="/images/no-data.png" mode="aspectFit"></image>
+    <view class="no-data-text">暂无数据</view>
+  </view>
+  <view class="shadow-wrap" wx:if="{{showGetUserInfo}}">
+    <view class="author-wrap">
+    <view class="getuserinfo-title">请求获取您的用户信息,以便您能体验到所有功能，！</view>
+    <button class="btn-confirm" bindgetuserinfo="getWxUserInfo" open-type='getUserInfo'>授权</button>
+  </view>
+  </view>
+  
 </view>

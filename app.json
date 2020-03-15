@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/articlelist/articlelist",
     "pages/special/special",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/articleDetail/articleDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

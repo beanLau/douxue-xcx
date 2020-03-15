@@ -1,36 +1,8 @@
-<view class="knowledge-content flex">
-  <scroll-view scroll-y class="type-list">
-    <view class="type-item">javascript</view>
-    <view class="type-item">html</view>
-    <view class="type-item">css</view>
-    <view class="type-item type-active">vue</view>
-    <view class="type-item">小程序</view>
-    <view class="type-item">设计模式</view>
-    <view class="type-item">算法</view>
-    <view class="type-item">node</view>
-    <view class="type-item">http</view>
-    <view class="type-item">其他</view>
-  </scroll-view>
-  <scroll-view scroll-y class="child-list flex">
-    <view class="child-item">
-      <image src="https://wxmp.api.wangxiao.cn/static/images/module/8.png" class="child-pic"></image>
-      <view class="child-name">全部</view>
+<view class="page-content">
+  <view class="special-list">
+    <view class="special-item" wx:for="{{specialList}}" data-id="{{item._id}}" data-title="{{item.name}}" bindtap="toArticleList">
+      <view class="special-title">{{item.name}}</view>
+      <view class="special-desc">{{item.desc}}</view>
     </view>
-    <view class="child-item">
-      <image src="https://wxmp.api.wangxiao.cn/static/images/module/8.png" class="child-pic"></image>
-      <view class="child-name">事件系统</view>
-    </view>
-    <view class="child-item">
-      <image src="https://wxmp.api.wangxiao.cn/static/images/module/8.png" class="child-pic"></image>
-      <view class="child-name">事件系统</view>
-    </view>
-    <view class="child-item">
-      <image src="https://wxmp.api.wangxiao.cn/static/images/module/8.png" class="child-pic"></image>
-      <view class="child-name">事件系统</view>
-    </view>
-    <view class="child-item">
-      <image src="https://wxmp.api.wangxiao.cn/static/images/module/8.png" class="child-pic"></image>
-      <view class="child-name">事件系统</view>
-    </view>
-  </scroll-view>
+  </view>
 </view>

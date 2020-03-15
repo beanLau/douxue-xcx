@@ -41,17 +41,17 @@ export default new class httpBase {
               return;
             }
             app.globalData.needBeginLogin = false;
-            app.login(() => { //获取完token以后执行回调
+            app.login((token) => { //获取完token以后执行回调
               //重新登陆以后调用一次队列中的promise；并设置队列为可循环状态。
               let promiseQueueItem = promiseQueue.shift();
               if (promiseQueueItem) {
                 app.globalData.exeQueue = true;
-                reqData.header.Authorization = "Bearer " + app.globalData.userInfo.token
+                reqData.header.Authorization = "Bearer " + token
                 app.http(reqData)
                 app.globalData.promiseQueue = promiseQueue;
               }
             }, true)
-          }else if (res.data.code === 0 || res.data.ResultCode === 0) {
+          }else if (res.data.code === 0) {
             if (reqData.resolve) {//如果是promise队列中的请求。
               reqData.resolve(res.data);
               let promiseQueueItem = promiseQueue.shift();
