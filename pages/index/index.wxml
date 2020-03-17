@@ -37,9 +37,9 @@
   </view>
   <view class="shadow-wrap" wx:if="{{showGetUserInfo}}">
     <view class="author-wrap">
-    <view class="getuserinfo-title">请求获取您的用户信息,以便您能体验到所有功能，！</view>
-    <button class="btn-confirm" bindgetuserinfo="getWxUserInfo" open-type='getUserInfo'>授权</button>
+      <view class="getuserinfo-title">请求获取您的用户信息,以便您能体验到所有功能，！</view>
+      <button class="btn-confirm" bindgetuserinfo="getWxUserInfo" open-type='getUserInfo'>授权</button>
+    </view>
   </view>
-  </view>
-  
+
 </view>

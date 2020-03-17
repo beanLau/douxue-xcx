@@ -12,7 +12,8 @@ Page({
     hasMore: true,
     commentValue: "",
     showMini: false,
-    timer: null
+    timer: null,
+    showGetUserInfo: false
   },
 
   /**
@@ -80,12 +81,50 @@ Page({
         wx.hideLoading()
       })
   },
+  getWxUserInfo: function (res) {
+    let _this = this;
+    let rawData
+    if (res.detail) { //用户点击按钮触发。
+      rawData = res.detail.rawData || ''
+    }
+    if (!rawData) { //拒绝授权
+      wx.showModal({
+        title: '提示',
+        content: '拒绝获取用户信息权限，您将无法获取完整用户体验!',
+        confirmText: '知道了',
+        showCancel: false
+      })
+    } else {
+      app.http({
+        url: 'xcxapi/updateUserWxInfo',
+        data: rawData
+      })
+        .then(res => {
+          app.globalData.userInfo = Object.assign(app.globalData.userInfo, res.data);
+          _this.setData({
+            avatarUrl: app.globalData.userInfo.avatarUrl
+          })
+        })
+    }
+    _this.setData({
+      showGetUserInfo: false
+    })
+  },
   changeComment:function(e){
     this.setData({
       commentValue: e.detail.value
     })
   },
   tocomment: function (){
+    if (!this.data.avatarUrl) { //如果用户没有授权
+      this.setData({
+        showGetUserInfo: true
+      })
+      return
+    }
+    if(!this.data.commentValue){
+      return
+    }
     wx.showLoading({
       title: '提交中',
     })
@@ -115,6 +154,12 @@ Page({
   },
   toZan:function() {
     let _this = this;
+    if (!this.data.avatarUrl) { //如果用户没有授权
+      this.setData({
+        showGetUserInfo: true
+      })
+      return
+    }
     app.http({
       url: 'addLikeCount',
       data: {

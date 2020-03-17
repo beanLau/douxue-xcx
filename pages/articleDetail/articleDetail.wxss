@@ -160,3 +160,47 @@ page{
   opacity: 0;
   border-radius: 20rpx;
 }
+
+.shadow-wrap {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.author-wrap {
+  width: 600rpx;
+  background: #fff;
+  padding: 40rpx 30rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 42rpx #999;
+}
+
+.getuserinfo-title {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  max-width: 500rpx;
+}
+
+.btn-confirm {
+  border: none;
+  width: 300rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  background: #2f7af1;
+  border-radius: 40rpx;
+  margin-top: 36rpx;
+}

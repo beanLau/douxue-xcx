@@ -33,7 +33,7 @@ Page({
   init: function () {
     this.getArticleList();
     this.getTagList();
-    this.checkShowAuthor()
+    //this.checkShowAuthor() 违反微信小程序运营规范，体验功能后再授权
   },
   checkShowAuthor: function(){
     if (app.globalData.userInfo && app.globalData.userInfo.nickName) {
