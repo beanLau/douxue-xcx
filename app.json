@@ -4,7 +4,8 @@
     "pages/articlelist/articlelist",
     "pages/special/special",
     "pages/my/my",
-    "pages/articleDetail/articleDetail"
+    "pages/articleDetail/articleDetail",
+    "pages/article/article"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,6 +22,12 @@
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index-select.png",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/article/article",
+        "iconPath": "images/article.png",
+        "selectedIconPath": "images/article-select.png",
+        "text": "文章"
       },
       {
         "pagePath": "pages/special/special",
