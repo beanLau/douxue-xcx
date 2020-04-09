@@ -1,4 +1,4 @@
-// pages/log.js
+let app = getApp()
 Page({
 
   /**
@@ -12,9 +12,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (app.globalData.userInfo && app.globalData.userInfo.token) {
+      this.init()
+    } else {
+      app.login(() => {
+        this.init();
+      })
+    }
   },
-
+  init(){
+    this.getTagList();
+  },
+  getTagList(){
+    let _this = this;
+    app.http({
+      url: 'xcxapi/getTodayQuesstions'
+    })
+      .then(res => {
+        console.log(res)
+      })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
