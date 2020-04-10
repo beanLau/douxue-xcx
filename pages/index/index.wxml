@@ -1,10 +1,11 @@
 <view class="page-content">
+	<button wx:if="{{!userInfo.nickName}}" class="btn-confirm" bindgetuserinfo="getWxUserInfo" open-type='getUserInfo'></button>
 	<!-- 心灵鸡汤 -->
 	<view class="soul-wrap">
 		<image class="soul-left" src="{{userInfo.avatarUrl || '/images/head.jpg'}}"></image>
 		<view class="soul-right">
 			<view class="soul__name" wx:if="{{userInfo.nickName}}">Hi~ {{userInfo.nickName}}</view>
-			<button wx:else class="btn-confirm" bindgetuserinfo="getWxUserInfo" open-type='getUserInfo'>用户信息授权</button>
+			<view class="soul__name" wx:else>Hi~ 游客</view>
 			<view class="soul__ctx">{{soulContent}}</view>
 		</view>
 	</view>
@@ -27,9 +28,9 @@
 			<view class="recommend--item-title">{{item.title}}</view>
 			<view class="recommend-item-content">
 				<view class="recommend-rage">
-          <text>难度</text>
-          <star class="star-content" starValue="{{item.difficulty}}"></star>
-        </view>
+					<text>难度</text>
+					<star class="star-content" starValue="{{item.difficulty}}"></star>
+				</view>
 				<view class="recommend-testcount">{{item.doCount}}人已做</view>
 			</view>
 		</view>
