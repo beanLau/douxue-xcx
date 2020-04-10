@@ -1,2 +1,37 @@
-<!--pages/log.wxml-->
-<text>pages/log.wxml</text>
+<view class="page-content">
+	<!-- 心灵鸡汤 -->
+	<view class="soul-wrap">
+		<image class="soul-left" src="{{userInfo.avatarUrl || '/images/head.jpg'}}"></image>
+		<view class="soul-right">
+			<view class="soul__name" wx:if="{{userInfo.nickName}}">Hi~ {{userInfo.nickName}}</view>
+			<button wx:else class="btn-confirm" bindgetuserinfo="getWxUserInfo" open-type='getUserInfo'>用户信息授权</button>
+			<view class="soul__ctx">{{soulContent}}</view>
+		</view>
+	</view>
+
+	<!-- nav -->
+	<view class="nav-scope">
+		<swiper indicator-dots indicator-color="#ddd" indicator-active-color="#FC8118" class="nav-swiper">
+			<swiper-item class="nav" wx:for="{{navModule}}" wx:key="inedx">
+				<view class="nav-item" wx:for="{{item}}" wx:key="title" data-title="{{item.title}}" data-type="{{item.type}}" bindtap="navigateModule">
+					<image src="{{item.iconUrl ? item.iconUrl : '/images/icon.png'}}" class="nav__image"></image>
+					<text>{{item.title}}</text>
+				</view>
+			</swiper-item>
+		</swiper>
+	</view>
+
+	<view class="recommend-list">
+		<view class="recommend-title">你知道吗？</view>
+		<view class="recommend-item" wx:for="{{recommendList}}" wx:key="item.id">
+			<view class="recommend--item-title">{{item.title}}</view>
+			<view class="recommend-item-content">
+				<view class="recommend-rage">
+          <text>难度</text>
+          <star class="star-content" starValue="{{item.difficulty}}"></star>
+        </view>
+				<view class="recommend-testcount">{{item.doCount}}人已做</view>
+			</view>
+		</view>
+	</view>
+</view>
