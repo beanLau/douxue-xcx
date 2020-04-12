@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "star": "/components/star/star",
+    "wemark": "/wemark/wemark"
+  }
+}

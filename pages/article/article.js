@@ -13,14 +13,17 @@ Page({
     pageSize: 10,
     articleList: null,
     hasMore: true,
-    showGetUserInfo: false
+    showGetUserInfo: false,
+    userInfo: null,
+    isForceAuthorize: false
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     this.setData({
-      picBase: app.globalData.picBase
+      picBase: app.globalData.picBase,
+      userInfo: app.globalData.userInfo
     })
     if (app.globalData.userInfo && app.globalData.userInfo.token){
       this.init()
@@ -34,6 +37,7 @@ Page({
     this.getArticleList();
     this.getTagList();
     //this.checkShowAuthor() 违反微信小程序运营规范，体验功能后再授权
+    this.getConfig();
   },
   checkShowAuthor: function(){
     if (app.globalData.userInfo && app.globalData.userInfo.nickName) {
@@ -62,7 +66,10 @@ Page({
         data: rawData
       })
         .then(res => {
-          app.globalData.userInfo = Object.assign(app.globalData.userInfo,res.data)
+          app.globalData.userInfo = Object.assign(app.globalData.userInfo,res.data),
+          _this.setData({
+            userInfo: app.globalData.userInfo
+          })
         })
     }
     _this.setData({
@@ -88,6 +95,17 @@ Page({
         
         _this.setData({
           tagList: res.data.list
+        })
+      })
+  },
+  getConfig() {
+    let _this = this;
+    app.http({
+      url: 'xcxapi/getConfig'
+    })
+      .then(res => {
+        _this.setData({
+          isForceAuthorize: res.data.isForceAuthorize
         })
       })
   },

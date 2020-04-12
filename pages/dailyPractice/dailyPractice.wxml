@@ -1,0 +1,17 @@
+<view class="page-content">
+  <view class="page-top">
+    <view class="top-left">
+      <text class="question-type">{{questionTypeStr}}</text>
+      <text class="daily-time">2020-04-12</text>
+    </view>
+    <text class="top-rgiht">{{currentIndex+1}}/{{questionList.length}}</text>
+  </view>
+  <swiper wx:if="{{questionList}}" current="{{index}}" bindchange="tabChange" current="{{currentIndex}}" class='question-list' duration="100">
+    <block wx:for="{{questionList}}" wx:key="title">
+      <swiper-item>
+        <question question-data="{{item}}"></question>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="page-tip">左右滑动切换试题</view>
+</view>

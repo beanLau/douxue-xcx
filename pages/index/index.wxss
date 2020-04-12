@@ -43,7 +43,7 @@ page {
 }
 .btn-confirm::after{ border: none; }
 .soul__ctx{
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   font-size: 30rpx;
 }
 
@@ -83,12 +83,13 @@ height: 210rpx;
 }
 .nav__image{
   margin-bottom: 15rpx;
-  width: 80rpx;
-  height: 80rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
 }
 .nav-item>text{
   display: block;
+  font-size: 30rpx;
 }
 
 

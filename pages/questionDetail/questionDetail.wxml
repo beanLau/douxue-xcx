@@ -1,0 +1,14 @@
+<view class="recommend-item">
+  <view class="recommend--item-title">{{detail.title}}</view>
+  <view class="recommend-item-content">
+    <view class="recommend-rage">
+      <text>难度</text>
+      <star class="star-content" starValue="{{detail.difficulty}}"></star>
+    </view>
+    <!-- <view class="recommend-testcount">{{item.doCount}}人已做</view> -->
+  </view>
+</view>
+<view class="question-analysis">
+  <view class="question-analysis-title">解析</view>
+  <wemark md="{{detail.analysis}}" link highlight type="wemark"></wemark>
+</view>

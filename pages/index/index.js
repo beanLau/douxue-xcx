@@ -26,22 +26,8 @@ Page({
       title: "错题练习",
       type: 4
     }]],
-    recommendList:[{
-      _id: 1,
-      title:"页面导入样式时，使用link和@import有什么区别？",
-      difficulty: 1,
-      doCount: 32
-    },{
-      _id: 2,
-      title:"圣杯布局和双飞翼布局的理解和区别，并用代码实现",
-      difficulty: 1,
-      doCount: 32
-    },{
-      _id: 3,
-      title:"用递归算法实现，数组长度为5且元素的随机数在2-32间不重复的值",
-      difficulty: 1,
-      doCount: 32
-    }]
+    recommendList:[],
+    isForceAuthorize: false
   },
 
   /**
@@ -63,16 +49,36 @@ Page({
     }
   },
   init(){
-    this.getTagList();
+    this.getStickQuestios();
+    this.getConfig();
   },
-  getTagList(){
+  getStickQuestios(){
     let _this = this;
     app.http({
-      url: 'xcxapi/getTodayQuesstions'
+      url: 'xcxapi/findStickQuestions'
     })
       .then(res => {
-        console.log(res)
+        _this.setData({
+          recommendList: res.data.list
+        })
       })
+  },
+  getConfig(){
+    let _this = this;
+    app.http({
+      url: 'xcxapi/getConfig'
+    })
+      .then(res => {
+        _this.setData({
+          isForceAuthorize: res.data.isForceAuthorize
+        })
+      })
+  },
+  toQuestionDetail(e){
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: `/pages/questionDetail/questionDetail?id=${e.currentTarget.dataset.id}`,
+    })
   },
   getWxUserInfo: function (res) {
     let _this = this;
@@ -105,7 +111,9 @@ Page({
     switch(type){
       case 1:
         //跳转到每日一练去做题
-        
+        wx.navigateTo({
+          url: '/pages/dailyPractice/dailyPractice',
+        })
         break;
       case 2:
         wx.showToast({

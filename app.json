@@ -5,7 +5,9 @@
     "pages/special/special",
     "pages/my/my",
     "pages/articleDetail/articleDetail",
-    "pages/article/article"
+    "pages/article/article",
+    "pages/questionDetail/questionDetail",
+    "pages/dailyPractice/dailyPractice"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,5 +1,5 @@
 <view class="page-content">
-	<button wx:if="{{!userInfo.nickName}}" class="btn-confirm" bindgetuserinfo="getWxUserInfo" open-type='getUserInfo'></button>
+	<button wx:if="{{!userInfo.nickName && isForceAuthorize}}" class="btn-confirm" bindgetuserinfo="getWxUserInfo" open-type='getUserInfo'></button>
 	<!-- 心灵鸡汤 -->
 	<view class="soul-wrap">
 		<image class="soul-left" src="{{userInfo.avatarUrl || '/images/head.jpg'}}"></image>
@@ -23,15 +23,15 @@
 	</view>
 
 	<view class="recommend-list">
-		<view class="recommend-title">你知道吗？</view>
-		<view class="recommend-item" wx:for="{{recommendList}}" wx:key="item.id">
+		<view class="recommend-title">热门话题</view>
+		<view class="recommend-item" wx:for="{{recommendList}}" wx:key="{{item._id}}" data-id="{{item._id}}" bindtap="toQuestionDetail">
 			<view class="recommend--item-title">{{item.title}}</view>
 			<view class="recommend-item-content">
 				<view class="recommend-rage">
 					<text>难度</text>
 					<star class="star-content" starValue="{{item.difficulty}}"></star>
 				</view>
-				<view class="recommend-testcount">{{item.doCount}}人已做</view>
+				<!-- <view class="recommend-testcount">{{item.doCount}}人已做</view> -->
 			</view>
 		</view>
 	</view>
