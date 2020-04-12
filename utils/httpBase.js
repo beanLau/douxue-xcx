@@ -8,8 +8,8 @@
  */
 export default new class httpBase {
   request(reqData,app) {
-    let baseUrl = 'http://127.0.0.1:3000/';
-    //let baseUrl = 'https://xcxapi.douxue.top/';
+    //let baseUrl = 'http://127.0.0.1:3000/';
+    let baseUrl = 'https://xcxapi.douxue.top/';
     let url = '';
     if (reqData.url.indexOf('http') > -1){
       url = reqData.url
